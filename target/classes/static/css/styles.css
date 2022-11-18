@@ -1,0 +1,27 @@
+h1 {
+    margin: 1.5rem 0;
+}
+
+.sidebar {
+    height: 100vh;
+    position: sticky;
+    top: 0px;
+}
+
+main {
+    display: flex;
+}
+
+.container-fluid {
+    padding-left: 0px;
+}
+
+#addtask_button {
+    position: fixed;
+    top: 2rem;
+    right: 4rem;
+}
+
+.task-cards {
+    display: flex;
+}

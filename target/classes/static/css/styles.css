@@ -36,3 +36,122 @@ main {
 #main {
     padding-left: 0;
 }
+
+/* Projects Style */
+
+.projects-icon {
+    width: 2rem;
+    fill: #0d6efd;
+}
+
+.project-element-container {
+    border: 0.2rem solid #0d6efd;
+    border-radius: 12px;
+    padding: 0.8rem;
+}
+
+.project-form{
+    padding: 1.5rem 3rem;
+}
+
+.project-back-button {
+    border: none;
+    background-color: transparent;
+    outline: none;
+}
+
+.project-back-icon{
+    width: 1.5rem;
+}
+
+.project {
+    width: 19rem;
+    height: 22.2rem;
+    margin-right: 1rem;
+}
+
+.project-list {
+    margin-top: 1em;
+}
+
+.projects-container {
+    position: relative;
+}
+
+.projects-buttons {
+    display: flex;
+    position: absolute;
+    top: 2rem;
+    right: 0;
+}
+
+.projects-add {
+    margin-left: 2rem;
+}
+
+.project-label {
+    font-weight: 600;
+    font-size: 2rem;
+}
+
+.project-sub-button-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem 0;
+}
+
+.project-title {
+    font-weight: 700;
+}
+
+.project-sub-button {
+    width: 45%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+}
+
+.sub-button-icon {
+    width: 1rem;
+    margin-right: 0.5rem;
+}
+
+.edit-button {
+    fill: #198754;
+}
+
+.project-sub-button:hover .edit-button, .project-sub-button:hover .delete-button {
+    fill: white;
+}
+
+.delete-button {
+    fill: #dc3545;
+}
+
+.project-complete {
+    border-radius: 50px;
+    width: 100%;
+}
+
+.project-details {
+    background: lightgrey;
+    margin: 1rem 0.1rem;
+    border-radius: 12px;
+    padding: 0.8rem;
+}
+
+.project-description {
+    height: 7rem;
+    white-space: pre-wrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.project-status {
+    height: 3rem;
+}
+
+.project-list {
+    display: flex;
+}

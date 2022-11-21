@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head th:replace="layouts :: head (pageTitle = 'Add Project')"></head>
+    <body>
+        <main class="container-fluid">
+            <div th:replace="layouts :: sidebar" class="col-3"></div>
+
+            <div class="container col-9">
+                <h1>
+                    <button class="project-back-button" onclick="location.href='/project'">
+                        <svg class="project-back-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+                    </button>
+                     <span class="project-label">Add Project</span>
+                </h1>
+
+                <form class="project-form project-element-container" action="/project/save" method="POST" th:object="${project}">
+                    <fieldset>
+                        <div class="form-group mb-2">
+                            <label class="mb-2">Project Name </label>
+                            <br>
+                            <input class="form-control" type="text" th:field="${project.name}" required/>
+                        </div>
+        
+                        <div class="form-group mb-2">
+                            <label class="mb-2">Description </label>
+                            <br>
+                            <textarea class="form-control" th:field="${project.description}"/>
+                        </div>
+                        <br>
+                        <div class="form-group mb-2">
+                            <label class="mb-2">Status </label>
+                            <br>
+                            <select class="form-control" th:field="${project.status}" required>
+                                <option th:value="Completed">Completed</option>
+                                <option th:value="In-progress">In-Progress</option>
+                            </select>
+                        </div>
+                        <br>
+                        <div class="project-sub-button-container">
+                            <button type="submit" class="btn btn-primary project-sub-button">Add</button>
+                            <button type="reset" class="btn btn-danger project-sub-button" onclick="location.href='/project'">Discard</button>
+                        </div>
+                    </fieldset>
+                </form>
+                
+            </div>
+        </main>
+
+    </body>
+</html>

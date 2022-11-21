@@ -1,13 +1,13 @@
-package com.javaproject.taskmanager;
+// package com.javaproject.taskmanager;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+// import org.junit.jupiter.api.Test;
+// import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
-class TaskmanagerApplicationTests {
+// @SpringBootTest
+// class TaskmanagerApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+// 	@Test
+// 	void contextLoads() {
+// 	}
 
-}
+// }

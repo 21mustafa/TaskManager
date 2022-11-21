@@ -1,0 +1,5 @@
+com/javaproject/taskmanager/controller/TaskController.class
+com/javaproject/taskmanager/TaskmanagerApplication.class
+com/javaproject/taskmanager/repository/TaskRepository.class
+com/javaproject/taskmanager/controller/HomeController.class
+com/javaproject/taskmanager/domain/Task.class

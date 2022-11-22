@@ -30,7 +30,7 @@ public class TaskController {
     ProjectRepository projectRepository;
 
     @Autowired
-    HttpSession session;  
+    HttpSession session;
 
     @GetMapping("/add")
     public String showAddTask(Model model) {
@@ -50,6 +50,7 @@ public class TaskController {
 
     @GetMapping("/edit/{id}")
     public String editTask(@PathVariable Long id, Model model) {
+        model.addAttribute("user", session.getAttribute("user"));
         Task task = taskRepository.findOneByTaskId(id);
         model.addAttribute("task", task);
         List<Project> projectList = projectRepository.findAll();

@@ -1,2 +1,2 @@
-insert into project_user (first_name, last_name, email, password) values ('aaa', 'aaa', 'aaa@aaa', 'aaa');
-insert into project (project_name, project_description, project_status) values ('aaa', 'aaa', 0);
+-- insert into project_user (first_name, last_name, email, password) values ('aaa', 'aaa', 'aaa@aaa', 'aaa');
+-- insert into project (project_name, project_description, project_status) values ('aaa', 'aaa', 0);

@@ -36,8 +36,8 @@
                         for (let i = 0; i < DATA_COUNT; i++) {
                             data[i] = {x: new Date(date.getFullYear(), date.getMonth(), date.getDate()), y: "0"};
                             for (index; index < labels.length; index++) {
-                                if ((labels[index].getFullYear() == date.getFullYear()) && (labels[index].getMonth() == date.getMonth())) {
-                                    if(labels[index].getDate() == date.getDate()) {
+                                if ((labels[index].getUTCFullYear() == date.getUTCFullYear()) && (labels[index].getUTCMonth() == date.getUTCMonth())) {
+                                    if(labels[index].getUTCDate() == date.getUTCDate()) {
                                         data[i] = {x: new Date(date.getFullYear(), date.getMonth(), date.getDate()), y: valueList[index]};
                                         break;
                                     }else if(labels[index].getDate() > date.getDate()) {

@@ -7,7 +7,6 @@
 
             <div class="container col-9 main-content">
 
-                    <!-- <h1 th:text="'Hello ' + ${user.firstName}"></h1> -->
                     <h1 class="m-3"><i class="fa-solid fa-clipboard blue-icon"></i> My Tasks</h1>
                     <button id="addtask_button" type="button" class="btn btn-success" onclick="location.href='/task/add'">Add Task</button>
 
@@ -17,8 +16,9 @@
                             <div class="card-body">
                                 <div class="card-head">
                                     <h5 class="card-title" th:text="${task.taskName}"></h5>
-                                    <p class="badge rounded-pill bg-success" th:text="${task.taskDeadline}"></p>
+                                    <p class="badge rounded-pill text-bg-success" id="taskDeadlineInCard" th:text="${task.taskDeadline}"></p>
                                 </div>
+                                <p class="card-text" th:text="${task.project.projectName}"></p>
                                 <p class="card-text" th:text="${task.taskDescription}"></p>
                                 <div class="text-center">
                                     <a th:href="@{/task/edit/{id}(id=${task.taskId})}" class="btn btn-outline-success col-5 m-1 btn-sm text-nowrap"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
@@ -29,6 +29,9 @@
                         </div>
                     </div>
                 </div>
+
+                <script th:src="@{/js/home.js}"></script>
+
             </div>
         </main>
 

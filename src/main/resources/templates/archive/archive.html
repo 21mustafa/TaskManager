@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head th:replace="layouts :: head (pageTitle = 'archive')"></head>
+  <body>
+    <main class="container-fluid">
+      <div th:replace="layouts :: sidebar" class="col-3"></div>
+
+      <div class="container col-9">
+        <!-- <h1 th:text="'Hello ' + ${user.firstName}"></h1> -->
+        <h1>My Archives</h1>
+
+        <div class="card-deck task-cards">
+          <div class="card border-dark col-3 m-1" th:each="task : ${mytasks}">
+            <div class="card-body">
+              <h5 class="card-title" th:text="${task.taskName}"></h5>
+              <p class="card-text" th:text="${task.taskDescription}"></p>
+              <div class="text-center">
+                <a
+                  th:href="@{/archive/back-to-task/{id}(id=${task.taskId})}"
+                  class="btn btn-info col-11 m-1 btn-sm"
+                  >Back to My Task</a
+                >
+                <a
+                  th:href="@{/archive/detail/{id}(id=${task.taskId})}"
+                  class="btn btn-primary col-11 m-1 btn-sm"
+                  >Detail</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

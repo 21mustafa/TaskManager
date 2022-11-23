@@ -15,6 +15,9 @@ import javax.persistence.OneToMany;
 
 import lombok.Data;
 
+import com.javaproject.taskmanager.domain.Task;
+import com.javaproject.taskmanager.domain.Project;
+
 @Entity
 @Data
 public class ProjectUser {
@@ -28,12 +31,11 @@ public class ProjectUser {
     private String email;
     private String password;
 
-    // @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    // private List<Task> taskList = new ArrayList<>();
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Task> taskList = new ArrayList<>();
 
-    // @ManyToMany
-    // @JoinTable(name = "user_project", joinColumns = @JoinColumn(name =
-    // "user_id"), inverseJoinColumns = @JoinColumn(name = "project_id"))
-    // private List<Project> projectList = new ArrayList<>();
+    @ManyToMany
+    @JoinTable(name = "user_project", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "project_id"))
+    private List<Project> projectList = new ArrayList<>();
 
 }

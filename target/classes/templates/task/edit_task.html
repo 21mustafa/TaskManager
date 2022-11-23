@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-<<<<<<< HEAD
     <head th:replace="layouts :: head (pageTitle = 'Edit Task')"></head>
     <body>
         <main class="container-fluid" id="main">
@@ -8,90 +7,40 @@
 
             <div class="container col-9 main-content">
                     <h1>Edit Task</h1>
-=======
-  <head th:replace="layouts :: head (pageTitle = 'Edit Task')"></head>
-  <body>
-    <main class="container-fluid">
-      <div th:replace="layouts :: sidebar" class="col-3"></div>
 
-      <div class="container col-9">
-        <h1>Edit Task</h1>
->>>>>>> origin/main
+                    <form action="#" th:action = "@{/task/update}" th:object="${task}" method="post">
+                        <input type="hidden" th:field="*{taskId}" th:value="*{taskId}">
+                        <input type="hidden" th:field="*{user}" th:value="*{user}">
+                        <div class="form-group">
+                            <label for="taskName" class="mb-1">Task Name</label>
+                            <input type="text" class="form-control mb-3" id="taskName" th:field="*{taskName}" th:value="*{taskName}" required>
+                        </div>
 
-        <form
-          action="#"
-          th:action="@{/task/update}"
-          th:object="${task}"
-          method="post"
-        >
-          <input type="hidden" th:field="*{taskId}" th:value="*{taskId}" />
-          <input type="hidden" th:field="*{user}" th:value="*{user}" />
-          <div class="form-group">
-            <label for="taskName" class="mb-1">Task Name</label>
-            <input
-              type="text"
-              class="form-control mb-3"
-              id="taskName"
-              th:field="*{taskName}"
-              th:value="*{taskName}"
-              required
-            />
-          </div>
+                        <div class="form-group">
+                            <label for="taskDescription" class="mb-1">Description</label>
+                            <textarea class="form-control mb-3" id="taskDescription" rows="2" th:field="*{taskDescription}" th:value="*{taskDescription}" required></textarea>
+                        </div>
 
-          <div class="form-group">
-            <label for="taskDescription" class="mb-1">Description</label>
-            <textarea
-              class="form-control mb-3"
-              id="taskDescription"
-              rows="2"
-              th:field="*{taskDescription}"
-              th:value="*{taskDescription}"
-              required
-            ></textarea>
-          </div>
+                        <div class="form-group">
+                            <label for="taskProject" class="mb-1">Project</label>
+                            <select class="form-control mb-3" id="taskProject" th:field="*{project}">
+                                <option th:each="project : ${projects}" th:value="${project.projectId}" th:text="${project.projectName}" required></option>
+                            </select>
+                        </div>
 
-          <div class="form-group">
-            <label for="taskProject" class="mb-1">Project</label>
-            <select
-              class="form-control mb-3"
-              id="taskProject"
-              th:field="*{project}"
-            >
-              <option
-                th:each="project : ${projects}"
-                th:value="${project.projectId}"
-                th:text="${project.projectName}"
-                required
-              ></option>
-            </select>
-          </div>
+                        <div class="form-group">
+                            <label for="taskDeadline" class="mb-1">Task Deadline</label>
+                            <input type="date" class="form-control mb-3" id="taskDeadline" th:field="*{taskDeadline}" th:value="*{taskDeadline}" required>
+                        </div>
 
-          <div class="form-group">
-            <label for="taskDeadline" class="mb-1">Task Deadline</label>
-            <input
-              type="date"
-              class="form-control mb-3"
-              id="taskDeadline"
-              th:field="*{taskDeadline}"
-              th:value="*{taskDeadline}"
-              required
-            />
-          </div>
+                        <div class="text-center">
+                            <button type="button submit" class="btn btn-success col-5 m-3" >Edit</button>
+                            <button type="button" class="btn btn-danger col-5 m-3" onclick="location.href='/'">Discard</button>
+                        </div>
 
-          <div class="text-center">
-            <button type="button submit" class="btn btn-success col-5 m-3">
-              Edit
-            </button>
-            <button
-              type="button"
-              class="btn btn-danger col-5 m-3"
-              onclick="location.href='/'"
-            >
-              Discard
-            </button>
-          </div>
-        </form>
-      </div>
-    </main>
-  </body>
+                    </form>
+            </div>
+        </main>
+
+    </body>
 </html>

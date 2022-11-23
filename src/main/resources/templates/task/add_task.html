@@ -2,10 +2,10 @@
 <html>
     <head th:replace="layouts :: head (pageTitle = 'Add Task')"></head>
     <body>
-        <main class="container-fluid">
+        <main class="container-fluid" id="main">
             <div th:replace="layouts :: sidebar" class="col-3"></div>
 
-            <div class="container col-9">
+            <div class="container col-9 main-content">
                     <h1>Add Task</h1>
 
                     <form action="#" th:action = "@{/task/add}" th:object="${task}" method="post">

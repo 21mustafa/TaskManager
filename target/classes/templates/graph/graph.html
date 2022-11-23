@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head th:replace="layouts :: head (pageTitle = 'graph')">
+    </head>
+    <body>
+        <main class="container-fluid" id="main">
+            <div th:replace="layouts :: sidebar" class="col-3"></div>
+            <div class="container col-9 main-content">
+                <div>
+                    <a th:if="${duration} eq 'week'" th:href="@{/graph/{duration}(duration='week')}" class="btn btn-primary m-1">Week</a>
+                    <a th:if="${duration} eq 'week'" th:href="@{/graph/{duration}(duration='month')}" class="btn btn-outline-primary m-1">Month</a>
+
+                    <a th:if="${duration} eq 'month'" th:href="@{/graph/{duration}(duration='week')}" class="btn btn-outline-primary m-1">Week</a>
+                    <a th:if="${duration} eq 'month'" th:href="@{/graph/{duration}(duration='month')}" class="btn btn-primary m-1">Month</a>
+                </div>
+
+                <div>
+                    <canvas id="chart">Canvas is not supported...</canvas>
+                    <!-- <script type="text/javascript" th:src="@{/js/chartdata.js}"></script> -->
+                    <script th:inline="javascript">
+                        let labelList = /*[[${labelList}]]*/"labelList";
+                        let valueList = /*[[${valueList}]]*/"valueList";
+                        let duration = /*[[${duration}]]*/"duration";
+                        let ctx = document.getElementById('chart')
+                        let labels = [];
+                        labelList.forEach(deadlineDate => labels.push(new Date(deadlineDate)));
+                        let DATA_COUNT = 7;
+                        if (duration == "month") {
+                            DATA_COUNT = 30;
+                        }
+
+                        let date = new Date();
+                        let data = [];
+                        let index = 0;
+
+                        for (let i = 0; i < DATA_COUNT; i++) {
+                            data[i] = {x: new Date(date.getFullYear(), date.getMonth(), date.getDate()), y: "0"};
+                            for (index; index < labels.length; index++) {
+                                if ((labels[index].getUTCFullYear() == date.getUTCFullYear()) && (labels[index].getUTCMonth() == date.getUTCMonth())) {
+                                    if(labels[index].getUTCDate() == date.getUTCDate()) {
+                                        data[i] = {x: new Date(date.getFullYear(), date.getMonth(), date.getDate()), y: valueList[index]};
+                                        break;
+                                    }else if(labels[index].getDate() > date.getDate()) {
+                                        break;
+                                    }
+                                }
+                            }
+                            date.setDate(date.getDate() + 1);
+                        }
+                        
+                        const myChart = new Chart(ctx, {
+                            type: 'line',
+                            data: {
+                                datasets: [{
+                                    label: 'My Tasks',
+                                    data: data,
+                                    borderColor: '#48f',
+                                }],
+                            },
+                            options: {
+                                responsive: true,
+                                scales: {
+                                    x: {
+                                        display: true,
+                                        title: {
+                                            display: true,
+                                            text: "Task Deadline"
+                                        },
+                                        type: 'time',
+                                        time: {
+                                            unit: 'day',
+                                            displayFormats: {
+                                                quarter: 'MMM D'
+                                            },
+                                        },
+                                    },
+                                    y: {
+                                        display: true,
+                                        title: {
+                                            display: true,
+                                            text: "Number of tasks"
+                                        },
+                                        min: 0,
+                                        max: 10,
+                                    },
+                                },
+                            },
+                        });
+                    </script>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>

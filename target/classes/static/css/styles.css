@@ -2,26 +2,37 @@ main {
   display: flex;
 }
 
-h1 {
-  margin: 1.5rem 0;
-}
-
 .sidebar {
   height: 100vh;
   position: sticky;
   top: 0px;
 }
 
-.container-fluid {
-  padding-left: 0px;
-}
-
-.task-cards {
-  display: flex;
-}
-
 #addtask_button {
-  position: fixed;
-  top: 2rem;
-  right: 4rem;
+    position: absolute;
+    right: 4rem;
+    top: 2rem;
+}
+
+.sidebar i {
+    color: white;
+}
+
+.card-head {
+    display: flex;
+    align-items: flex-end;
+}
+
+.badge {
+    margin-bottom: 8px;
+    position: absolute;
+    right: 16px;
+}
+
+.main-content {
+    padding: 1rem;
+}
+
+#main {
+    padding-left: 0;
 }

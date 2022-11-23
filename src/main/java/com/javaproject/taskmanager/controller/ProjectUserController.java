@@ -36,8 +36,7 @@ public class ProjectUserController {
         if (loginUser != null) {
             session.setAttribute("user", loginUser);
             model.addAttribute("user", loginUser);
-            // return "redirect:/";
-            return "projectUser/signup";
+            return "redirect:/";
         }
         return "redirect:/login";
     }

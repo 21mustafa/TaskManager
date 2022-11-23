@@ -18,10 +18,6 @@ main {
     color: white;
 }
 
-.blue-icon {
-    color: blue;
-}
-
 .card-head {
     display: flex;
     align-items: flex-end;

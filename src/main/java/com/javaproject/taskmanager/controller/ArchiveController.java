@@ -44,6 +44,7 @@ public class ArchiveController {
 
   @GetMapping("/detail/{id}")
   public String showDetail(@PathVariable Long id, Model model){
+    model.addAttribute("user", session.getAttribute("user"));
     Task task = taskRepository.findOneByTaskId(id);
     model.addAttribute("task", task);
     return "archive/detail";

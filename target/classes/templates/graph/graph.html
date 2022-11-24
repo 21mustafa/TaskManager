@@ -16,7 +16,6 @@
 
                 <div>
                     <canvas id="chart">Canvas is not supported...</canvas>
-                    <!-- <script type="text/javascript" th:src="@{/js/chartdata.js}"></script> -->
                     <script th:inline="javascript">
                         let labelList = /*[[${labelList}]]*/"labelList";
                         let valueList = /*[[${valueList}]]*/"valueList";
@@ -24,29 +23,25 @@
                         let ctx = document.getElementById('chart')
                         let labels = [];
                         labelList.forEach(deadlineDate => labels.push(new Date(deadlineDate)));
+                        labels.forEach((item, index) => labels[index] = new Date(item.getUTCFullYear(), item.getUTCMonth(), item.getUTCDate()));
                         let DATA_COUNT = 7;
                         if (duration == "month") {
                             DATA_COUNT = 30;
                         }
 
                         let date = new Date();
+                        date = new Date(date.getFullYear(), date.getMonth(), date.getDate());
                         let data = [];
-                        let index = 0;
+                        let index = -1;
 
                         for (let i = 0; i < DATA_COUNT; i++) {
                             data[i] = {x: new Date(date.getFullYear(), date.getMonth(), date.getDate()), y: "0"};
-                            for (index; index < labels.length; index++) {
-                                if ((labels[index].getUTCFullYear() == date.getUTCFullYear()) && (labels[index].getUTCMonth() == date.getUTCMonth())) {
-                                    if(labels[index].getUTCDate() == date.getUTCDate()) {
-                                        data[i] = {x: new Date(date.getFullYear(), date.getMonth(), date.getDate()), y: valueList[index]};
-                                        break;
-                                    }else if(labels[index].getDate() > date.getDate()) {
-                                        break;
-                                    }
+                                index = labels.findIndex(item => date.getTime() == item.getTime());
+                                if(index >= 0) {
+                                    data[i] = {x: new Date(date.getFullYear(), date.getMonth(), date.getDate()), y: valueList[index]};
                                 }
-                            }
                             date.setDate(date.getDate() + 1);
-                        }
+                        };
                         
                         const myChart = new Chart(ctx, {
                             type: 'line',

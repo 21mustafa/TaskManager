@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.javaproject.taskmanager.domain.Project;
-import com.javaproject.taskmanager.domain.ProjectUser;
+// import com.javaproject.taskmanager.domain.Project;
+// import com.javaproject.taskmanager.domain.ProjectUser;
 import com.javaproject.taskmanager.domain.Task;
-import com.javaproject.taskmanager.repository.ProjectRepository;
+// import com.javaproject.taskmanager.repository.ProjectRepository;
 import com.javaproject.taskmanager.repository.TaskRepository;
 
 @Controller
@@ -26,8 +26,8 @@ public class TaskController {
     @Autowired
     TaskRepository taskRepository;
 
-    @Autowired
-    ProjectRepository projectRepository;
+    // @Autowired
+    // ProjectRepository projectRepository;
 
     @Autowired
     HttpSession session;
@@ -36,14 +36,14 @@ public class TaskController {
     public String showAddTask(Model model) {
         model.addAttribute("user", session.getAttribute("user"));
         model.addAttribute("task", new Task());
-        List<Project> projectList = projectRepository.findAll();
-        model.addAttribute("projects", projectList);
+        // List<Project> projectList = projectRepository.findAll();
+        // model.addAttribute("projects", projectList);
         return "task/add_task";
     }
 
     @PostMapping("/add")
     public String addTask(Task task) {
-        task.setUser((ProjectUser) session.getAttribute("user"));
+        // task.setUser((ProjectUser) session.getAttribute("user"));
         taskRepository.save(task);
         return "redirect:/";
     }
@@ -53,8 +53,8 @@ public class TaskController {
         model.addAttribute("user", session.getAttribute("user"));
         Task task = taskRepository.findOneByTaskId(id);
         model.addAttribute("task", task);
-        List<Project> projectList = projectRepository.findAll();
-        model.addAttribute("projects", projectList);
+        // List<Project> projectList = projectRepository.findAll();
+        // model.addAttribute("projects", projectList);
         return "task/edit_task";
     }
 

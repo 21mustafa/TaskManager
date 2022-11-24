@@ -8,12 +8,12 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
 import com.javaproject.taskmanager.domain.ChartData;
-import com.javaproject.taskmanager.domain.ProjectUser;
+// import com.javaproject.taskmanager.domain.ProjectUser;
 import com.javaproject.taskmanager.domain.Task;
 
 public interface TaskRepository extends CrudRepository<Task, Long>{
     
-    List<Task> findByUserAndTaskStatusOrderByTaskDeadline(ProjectUser user, int taskStatus);
+    // List<Task> findByUserAndTaskStatusOrderByTaskDeadline(ProjectUser user, int taskStatus);
 
     Task findOneByTaskId(Long id);
 

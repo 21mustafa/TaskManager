@@ -2,55 +2,30 @@
 <html>
 
 <head th:replace="layouts :: head (pageTitle = 'My Projects')"></head>
-
 <body>
-    <main class="container-fluid">
+    <main class="container-fluid" id="main">
         <div th:replace="layouts :: sidebar" class="col-3"></div>
 
-        <div class="projects-container container col-9">
+        <div class="container col-9 main-content">
 
-            <h1>
-                <svg class="projects-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                    <path
-                        d="M184 48H328c4.4 0 8 3.6 8 8V96H176V56c0-4.4 3.6-8 8-8zm-56 8V96H64C28.7 96 0 124.7 0 160v96H192 320 512V160c0-35.3-28.7-64-64-64H384V56c0-30.9-25.1-56-56-56H184c-30.9 0-56 25.1-56 56zM512 288H320v32c0 17.7-14.3 32-32 32H224c-17.7 0-32-14.3-32-32V288H0V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V288z" />
-                </svg>
-                <span class="project-label">My Projects</span>
-            </h1>
+            <h1 class="m-3"><i class="fa-solid fa-briefcase text-primary"></i>My Projects</h1>
+            <button id="addtask_button" type="button" class="btn btn-primary" onclick="location.href='/project/new'">Add Project</button>
 
-            <div class="projects-buttons">
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        Dropdown button
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
-                </div>
-                <button class="projects-add btn btn-primary" onclick="location.href='/project/new'">Add Project</button>
-            </div>
-
-            <div class="project-list">
-                <div class="project project-element-container"  th:each="project: ${projects}">
-                    <div class="project-title" th:text="${project.name}"></div>
-                    <div class="project-details project-description" th:text="${project.description}"></div>
-                    <div class="project-details project-status" th:text="${project.status}"></div>
-                     <div class="project-buttons">
-                        <div class="project-sub-button-container">
-                            <a class="project-sub-button btn btn-outline-success"  th:href="@{/project/edit/{id}(id=${project.id})}">
-                                <svg class="sub-button-icon edit-button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M362.7 19.3L314.3 67.7 444.3 197.7l48.4-48.4c25-25 25-65.5 0-90.5L453.3 19.3c-25-25-65.5-25-90.5 0zm-71 71L58.6 323.5c-10.4 10.4-18 23.3-22.2 37.4L1 481.2C-1.5 489.7 .8 498.8 7 505s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L421.7 220.3 291.7 90.3z"/></svg>
-                                <span>Edit</span>
-                            </a>
-                            <a class="project-sub-button btn btn-outline-danger"  th:href="@{/project/delete/{id}(id=${project.id})}">
-                                <svg class="sub-button-icon delete-button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg>
-                                <span>Delete</span>
-                            </a>
+            <div class="container">
+                <div class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-2">
+                    <div class="card border-success m-2" th:each="project : ${projects}">
+                        <div class="card-body">
+                            <div class="card-head">
+                                <h5 class="card-title" th:text="${project.name}"></h5>
+                            </div>
+                            <p class="card-text" th:text="${project.description}"></p>
+                            <div class="text-center">
+                                <a th:href="@{/project/edit/{id}(id=${project.id})}" class="btn btn-outline-success col-5 m-1 btn-sm text-nowrap"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
+                                <a th:href="@{/project/delete/{id}(id=${project.id})}" class="btn btn-outline-danger col-5 m-1 btn-sm text-nowrap"><i class="fa-solid fa-trash"></i> Delete</a>
+                                <a th:href="@{/project/complete/{id}(id=${project.id})}" class="btn btn-primary col-11 m-1 btn-sm">Complete</a>
+                            </div>                            
                         </div>
-                        
-                        <a class="project-complete btn btn-primary" th:href="@{/project/complete/{id}(id=${project.id})}">Complete</a>
-                     </div>
+                    </div>
                 </div>
             </div>
         </div>

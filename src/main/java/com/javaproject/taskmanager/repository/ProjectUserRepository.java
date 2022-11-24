@@ -10,5 +10,6 @@ public interface ProjectUserRepository extends CrudRepository<ProjectUser, Long>
 
     ProjectUser findByEmailAndPassword(String email, String password);
 
+    @Override
     List<ProjectUser> findAll();
 }

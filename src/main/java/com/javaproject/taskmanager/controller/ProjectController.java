@@ -32,8 +32,9 @@ public class ProjectController {
 
    @GetMapping("/home")
    public String showProject(Model model) {
-         model.addAttribute("user", session.getAttribute("user"));
-         List<Project> projects = projectRepository.findAll();
+         ProjectUser user = (ProjectUser) session.getAttribute("user");
+         model.addAttribute("user", user);
+         List<Project> projects = projectRepository.findAllProjectsByUserId(user.getUserId());
          model.addAttribute("projects", projects);
          return "project/project";
    }
@@ -50,8 +51,7 @@ public class ProjectController {
    @PostMapping("/save")
    public String saveProject(Project project, Model model) {
       projectRepository.save(project);
-      // System.out.println(project.getId());
-      return "redirect:/project";
+      return "redirect:/project/home";
    }
 
    @GetMapping("/edit/{id}")
@@ -67,7 +67,7 @@ public class ProjectController {
    @GetMapping("/delete/{id}")
    public String deleteTask(@PathVariable Long id) {
       projectRepository.deleteById(id);
-      return "redirect:/project";
+      return "redirect:/project/home";
    }
 
    @GetMapping("/complete/{id}")
@@ -75,6 +75,6 @@ public class ProjectController {
       Project project = projectRepository.findById(id).get();
       project.setStatus(1);
       projectRepository.save(project);
-      return "redirect:/project";
+      return "redirect:/project/home";
    }
 }

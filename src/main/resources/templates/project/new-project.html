@@ -8,7 +8,7 @@
             <div class="container col-9 main-content">
                 <h1>Add Project</h1>
 
-                <form action="/project/save" method="POST" th:object="${project}">
+                <form th:action="@{/project/save}" method="POST" th:object="${project}">
                     <div class="form-group">
                         <label class="mb-2">Project Name </label>
                         <input class="form-control" type="text" th:field="${project.name}" required/>
@@ -29,7 +29,7 @@
                     <br>
                     <div class="text-center">
                         <button type="submit" class="btn btn-primary col-5 m-3">Add</button>
-                        <button type="reset" class="btn btn-danger col-5 m-3" onclick="location.href='/project'">Discard</button>
+                        <button type="reset" class="btn btn-danger col-5 m-3" onclick="location.href='/project/home'">Discard</button>
                     </div>
                 </form>
                 

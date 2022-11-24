@@ -19,13 +19,13 @@
                         <textarea class="form-control" th:field="${project.description}"/>
                     </div>
                     <br>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label class="mb-2">Status </label>
                         <select class="form-control mb-3" th:field="${project.status}" required>
-                            <option th:value="In-progress">In-Progress</option>
-                            <option th:value="Completed">Completed</option>
+                            <option th:value=0>In-Progress</option>
+                            <option th:value=1>Completed</option>
                         </select>
-                    </div>
+                    </div> -->
                     <br>
                     <div class="text-center">
                         <button type="submit" class="btn btn-primary col-5 m-3">Add</button>

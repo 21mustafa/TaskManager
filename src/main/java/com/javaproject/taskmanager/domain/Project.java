@@ -34,10 +34,10 @@ public class Project {
     @Column(name = "project_status")
     private int status;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
     private List<Task> taskList  = new ArrayList<>();
 
-    @ManyToMany(mappedBy = "projectList")
+    @ManyToMany(mappedBy = "projectList", cascade = CascadeType.ALL)
     private List<ProjectUser> userList  = new ArrayList<>();
 
     public Project(long id, String name, String description, int status) {

@@ -25,7 +25,7 @@ public class ProjectController {
    @Autowired
    ProjectRepository projectRepository;
 
-   @GetMapping("/project")
+   @GetMapping("/home")
    public String showProject(Model model) {
          model.addAttribute("user", session.getAttribute("user"));
          List<Project> projects = projectRepository.findAll();
@@ -43,7 +43,7 @@ public class ProjectController {
    @PostMapping("/save")
    public String saveProject(Project project, Model model) {
       projectRepository.save(project);
-      System.out.println(project.getId());
+      // System.out.println(project.getId());
       return "redirect:/project";
    }
 
@@ -64,7 +64,7 @@ public class ProjectController {
    @GetMapping("/complete/{id}")
    public String completeTask(@PathVariable Long id) {
       Project project = projectRepository.findById(id).get();
-      project.setStatus("Completed");
+      project.setStatus(1);
       projectRepository.save(project);
       return "redirect:/project";
    }

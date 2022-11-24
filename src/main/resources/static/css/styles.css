@@ -14,10 +14,6 @@ main {
     top: 2rem;
 }
 
-.sidebar i {
-    color: white;
-}
-
 .card-head {
     display: flex;
     align-items: flex-end;

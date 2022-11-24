@@ -13,13 +13,12 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
-import lombok.Data;
-
-import com.javaproject.taskmanager.domain.Task;
-import com.javaproject.taskmanager.domain.Project;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@Data
+@Getter
+@Setter
 public class ProjectUser {
 
     @Id

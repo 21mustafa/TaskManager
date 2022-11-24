@@ -55,4 +55,11 @@ public class ProjectController {
       return "redirect:/project";
    }
 
+   @GetMapping("/complete/{id}")
+   public String completeTask(@PathVariable Long id) {
+      Project project = projectRepository.findById(id).get();
+      project.setStatus("Completed");
+      projectRepository.save(project);
+      return "redirect:/project";
+   }
 }

@@ -49,7 +49,7 @@
                             </a>
                         </div>
                         
-                        <button class="project-complete btn btn-primary">Complete</button>
+                        <a class="project-complete btn btn-primary" th:href="@{/project/complete/{id}(id=${project.id})}">Complete</a>
                      </div>
                 </div>
             </div>

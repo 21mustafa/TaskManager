@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.javaproject.taskmanager.domain.ChartData;
-// import com.javaproject.taskmanager.domain.ProjectUser;
+import com.javaproject.taskmanager.domain.ProjectUser;
 import com.javaproject.taskmanager.repository.TaskRepository;
 
 @Controller
@@ -34,8 +34,8 @@ public class GraphController {
 
     @GetMapping("/graph/{duration}")
     public String showGraphWeek(Model model,@PathVariable String duration) {
-        // ProjectUser user = (ProjectUser) session.getAttribute("user");
-        // model.addAttribute("user", user);
+        ProjectUser user = (ProjectUser) session.getAttribute("user");
+        model.addAttribute("user", user);
         model.addAttribute("duration", duration);
         Calendar calendar = Calendar.getInstance();
         Date startDate = new Date(calendar.getTime().getTime());
@@ -46,13 +46,13 @@ public class GraphController {
             calendar.add(Calendar.DAY_OF_MONTH, -1);
         }
         Date endDate = new Date(calendar.getTime().getTime());
-        // List<ChartData> chartDataList = taskRepository.selectGraphData(user.getUserId(), 0, startDate, endDate);
+        List<ChartData> chartDataList = taskRepository.selectGraphData(user.getUserId(), 0, startDate, endDate);
         List<String> labelList = new ArrayList<>();
         List<String> valueList = new ArrayList<>();
-        // for(ChartData data : chartDataList) {
-        //     labelList.add(data.getTaskDeadline());
-        //     valueList.add(data.getGraphValue());
-        // }
+        for(ChartData data : chartDataList) {
+            labelList.add(data.getTaskDeadline());
+            valueList.add(data.getGraphValue());
+        }
         model.addAttribute("labelList", labelList);
         model.addAttribute("valueList", valueList);
         return "graph/graph";

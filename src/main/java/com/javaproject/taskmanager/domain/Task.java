@@ -27,11 +27,11 @@ public class Task {
     private Date taskDeadline;
     private Date taskCompletedDate = null;
 
-    // @ManyToOne
-    // @JoinColumn(name = "user_id")
-    // private ProjectUser user;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private ProjectUser user;
 
-    // @ManyToOne
-    // @JoinColumn(name = "project_id")
-    // private Project project;
+    @ManyToOne
+    @JoinColumn(name = "project_id")
+    private Project project;
 }

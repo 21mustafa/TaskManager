@@ -35,7 +35,7 @@ public class ProjectUserController {
         ProjectUser loginUser = projectUserRepository.findByEmailAndPassword(user.getEmail(), user.getPassword());
         if (loginUser != null) {
             session.setAttribute("user", loginUser);
-            model.addAttribute("user", loginUser);
+            // model.addAttribute("user", loginUser);
             return "redirect:/";
         }
         return "redirect:/login";

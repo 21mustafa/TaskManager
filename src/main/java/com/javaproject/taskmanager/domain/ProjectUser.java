@@ -33,7 +33,7 @@ public class ProjectUser {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Task> taskList = new ArrayList<>();
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "user_project", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "project_id"))
     private List<Project> projectList = new ArrayList<>();
 

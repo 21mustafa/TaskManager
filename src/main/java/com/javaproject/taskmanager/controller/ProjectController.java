@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.javaproject.taskmanager.domain.Project;
+import com.javaproject.taskmanager.domain.ProjectUser;
 import com.javaproject.taskmanager.repository.ProjectRepository;
+import com.javaproject.taskmanager.repository.ProjectUserRepository;
 
 @Controller
 @RequestMapping("/project")
@@ -24,6 +26,9 @@ public class ProjectController {
 
    @Autowired
    ProjectRepository projectRepository;
+
+   @Autowired
+   ProjectUserRepository projectUserRepository;
 
    @GetMapping("/home")
    public String showProject(Model model) {
@@ -37,6 +42,8 @@ public class ProjectController {
    public String displayProjectFrom(Model model) {
       model.addAttribute("user", session.getAttribute("user"));
       model.addAttribute("project", new Project());
+      List<ProjectUser> users = projectUserRepository.findAll();
+      model.addAttribute("users", users);
       return "project/new-project";
    }
 
@@ -52,6 +59,8 @@ public class ProjectController {
       model.addAttribute("user", session.getAttribute("user"));
       Project project = projectRepository.findById(id).get();
       model.addAttribute("project", project);
+      List<ProjectUser> users = projectUserRepository.findAll();
+      model.addAttribute("users", users);
       return "project/edit-project";
    }
 

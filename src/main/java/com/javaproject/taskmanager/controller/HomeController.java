@@ -25,7 +25,7 @@ public class HomeController {
     @GetMapping("/")
     public String showHome(Model model) {
         ProjectUser user = (ProjectUser) session.getAttribute("user");
-        model.addAttribute("user", user);
+        model.addAttribute("user", session.getAttribute("user"));
         List<Task> taskList = taskRepository.findByUserAndTaskStatusOrderByTaskDeadline(user, 0);
         model.addAttribute("mytasks", taskList);
         return "home/home";

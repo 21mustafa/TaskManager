@@ -33,7 +33,7 @@ public class ProjectController {
    @GetMapping("/home")
    public String showProject(Model model) {
          ProjectUser user = (ProjectUser) session.getAttribute("user");
-         model.addAttribute("user", user);
+         model.addAttribute("user", session.getAttribute("user"));
          List<Project> projects = projectRepository.findAllProjectsByUserId(user.getUserId());
          model.addAttribute("projects", projects);
          return "project/project";

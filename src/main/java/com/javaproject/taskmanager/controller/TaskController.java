@@ -35,7 +35,7 @@ public class TaskController {
     @GetMapping("/add")
     public String showAddTask(Model model) {
         ProjectUser user = (ProjectUser) session.getAttribute("user");
-        model.addAttribute("user", user);
+        model.addAttribute("user", session.getAttribute("user"));
         model.addAttribute("task", new Task());
         List<Project> projectList = projectRepository.findAllProjectsByUserId(user.getUserId());
         model.addAttribute("projects", projectList);
@@ -52,7 +52,7 @@ public class TaskController {
     @GetMapping("/edit/{id}")
     public String editTask(@PathVariable Long id, Model model) {
         ProjectUser user = (ProjectUser) session.getAttribute("user");
-        model.addAttribute("user", user);
+        model.addAttribute("user", session.getAttribute("user"));
         Task task = taskRepository.findOneByTaskId(id);
         model.addAttribute("task", task);
         List<Project> projectList = projectRepository.findAllProjectsByUserId(user.getUserId());

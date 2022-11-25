@@ -29,14 +29,14 @@
 
           <div class="form-group">
             <label class="mb-2">Description </label>
-            <textarea class="form-control" th:field="*{description}" th:value="*{description}" />
+            <textarea class="form-control" th:field="*{description}" th:value="*{description}" required/>
           </div>
 
           <br />
 
           <div class="form-group">
             <label class="mb-2">Member</label>
-            <select multiple class="form-control mb-2" th:field="*{userList}">
+            <select multiple class="form-control mb-2" th:field="*{userList}" required>
               <option
                 th:each="users : ${users}"
                 th:value="${users.userId}"
@@ -46,8 +46,8 @@
           </div>
 
           <div class="form-group">
-                        <label class="mb-2">Status </label>
-                        <select class="form-control" th:field="*{status}">
+                        <label class="mb-2">Status</label>
+                        <select class="form-control" th:field="*{status}" required>
                             <option th:value=0 th:text="In-Progress"></option>
                             <option th:value=1 th:text="Completed"></option>
                         </select>

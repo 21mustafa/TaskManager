@@ -32,7 +32,7 @@
           <br />
           <div class="form-group">
             <label class="mb-2">Member</label>
-            <select multiple class="form-control mb-2" th:field="*{userList}">
+            <select multiple class="form-control mb-2" th:field="*{userList}" required>
               <option
                 th:each="users : ${users}"
                 th:value="${users.userId}"

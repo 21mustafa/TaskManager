@@ -77,4 +77,10 @@ public class ProjectController {
       projectRepository.save(project);
       return "redirect:/project/home";
    }
+
+   @PostMapping("/update")
+   public String addTask(Project project, Model model) {
+      projectRepository.save(project);
+      return "redirect:/project/home";
+   }
 }

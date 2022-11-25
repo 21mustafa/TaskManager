@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <head th:replace="layouts :: head (pageTitle = 'Add Project')"></head>
+  <head th:replace="layouts :: head (pageTitle = 'Edit Project')"></head>
   <body>
     <main class="container-fluid" id="main">
       <div th:replace="layouts :: sidebar" class="col-3"></div>
@@ -9,30 +9,34 @@
         <h1>Edit Project</h1>
         <br />
 
-        <form action="/project/save" method="POST" th:object="${project}">
+        <form th:action="@{/project/update}" method="POST" th:object="${project}">
           <input
             type="hidden"
-            th:field="${project.id}"
-            th:value="${project.id}"
+            th:field="*{id}"
+            th:value="*{id}"
           />
           <div class="form-group">
             <label class="mb-2">Project Name </label>
             <input
               class="form-control"
               type="text"
-              th:field="${project.name}"
+              th:field="*{name}"
+              th:value="*{name}"
+              required
             />
           </div>
           <br />
 
           <div class="form-group">
             <label class="mb-2">Description </label>
-            <textarea class="form-control" th:field="${project.description}" />
+            <textarea class="form-control" th:field="*{description}" th:value="*{description}" />
           </div>
+
           <br />
+
           <div class="form-group">
             <label class="mb-2">Member</label>
-            <select class="form-control mb-2" h:field="*{users}" required>
+            <select multiple class="form-control mb-2" th:field="*{userList}">
               <option
                 th:each="users : ${users}"
                 th:value="${users.userId}"
@@ -40,13 +44,15 @@
               ></option>
             </select>
           </div>
-          <!-- <div class="form-group">
+
+          <div class="form-group">
                         <label class="mb-2">Status </label>
-                        <select class="form-control" th:field="${project.status}">
-                            <option th:value=0>In-Progress</option>
-                            <option th:value=1>Completed</option>
+                        <select class="form-control" th:field="*{status}">
+                            <option th:value=0 th:text="In-Progress"></option>
+                            <option th:value=1 th:text="Completed"></option>
                         </select>
-                    </div> -->
+          </div>
+
           <br />
           <div class="text-center">
             <button type="submit" class="btn btn-success col-5 m-3">

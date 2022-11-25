@@ -18,11 +18,11 @@
                                     <h5 class="card-title" th:text="${task.taskName}"></h5>
                                     <p class="badge rounded-pill text-bg-success" id="taskDeadlineInCard" th:text="${task.taskDeadline}"></p>
                                 </div>
-                                <p class="card-text" th:text="${task.project.projectName}"></p>
+                                <p class="card-text" th:text="${task.project.name}"></p>
                                 <p class="card-text" th:text="${task.taskDescription}"></p>
                                 <div class="text-center">
-                                    <a th:href="@{/task/edit/{id}(id=${task.taskId})}" class="btn btn-outline-success col-5 m-1 btn-sm text-nowrap"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
-                                    <a th:href="@{/task/delete/{id}(id=${task.taskId})}" class="btn btn-outline-danger col-5 m-1 btn-sm text-nowrap"><i class="fa-solid fa-trash"></i> Delete</a>
+                                    <a th:href="@{/task/edit/{id}(id=${task.taskId})}" class="btn btn-outline-success col-5 m-1 btn-sm text-nowrap"><i class="fa-solid fa-pen-to-square text-success"></i> Edit</a>
+                                    <a th:href="@{/task/delete/{id}(id=${task.taskId})}" class="btn btn-outline-danger col-5 m-1 btn-sm text-nowrap"><i class="fa-solid fa-trash text-danger"></i> Delete</a>
                                     <a th:href="@{/task/complete/{id}(id=${task.taskId})}" class="btn btn-primary col-11 m-1 btn-sm">Complete</a>
                                 </div>                            
                             </div>

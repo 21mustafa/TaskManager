@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head th:replace="layouts :: head (pageTitle = 'signup')"></head>
+    <body>
+        <main class="container-fluid vh-100 align-items-center">
+            <div class="container col-5 h-75 border border-primary d-flex justify-content-center align-items-center rounded">
+                <div class="col-10 h-75">
+                    <h4 class="text-primary text-center">Sign Up</h4>
+
+                    <form th:action = "@{/signup}" th:object="${user}" method="post">
+                        <div class="form-group">
+                            <label for="firstName" class="mb-1">First Name</label>
+                            <input type="text" class="form-control mb-3" id="firstName" th:field="*{firstName}" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="lastName" class="mb-1">Last Name</label>
+                            <input type="text" class="form-control mb-3" id="lastName" th:field="*{lastName}" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email" class="mb-1">Email</label>
+                            <input type="email" class="form-control mb-3" id="email" th:field="*{email}" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password" class="mb-1">Password</label>
+                            <input type="password" class="form-control mb-3" id="password" th:field="*{password}" required>
+                        </div>
+
+                        <div class="text-center">
+                            <button type="button submit" class="btn btn-primary col-5 m-3" >Sign Up</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </main>
+
+    </body>
+</html>

@@ -8,7 +8,7 @@ import com.javaproject.taskmanager.domain.ProjectUser;
 
 public interface ProjectUserRepository extends CrudRepository<ProjectUser, Long> {
 
-    ProjectUser findByEmailAndPassword(String email, String password);
+    ProjectUser findOneByEmailAndPassword(String email, String password);
 
     @Override
     List<ProjectUser> findAll();

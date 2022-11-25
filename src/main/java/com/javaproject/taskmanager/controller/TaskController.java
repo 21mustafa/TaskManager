@@ -34,9 +34,10 @@ public class TaskController {
 
     @GetMapping("/add")
     public String showAddTask(Model model) {
-        model.addAttribute("user", session.getAttribute("user"));
+        ProjectUser user = (ProjectUser) session.getAttribute("user");
+        model.addAttribute("user", user);
         model.addAttribute("task", new Task());
-        List<Project> projectList = projectRepository.findAll();
+        List<Project> projectList = projectRepository.findAllProjectsByUserId(user.getUserId());
         model.addAttribute("projects", projectList);
         return "task/add_task";
     }

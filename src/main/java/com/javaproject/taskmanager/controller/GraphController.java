@@ -35,7 +35,7 @@ public class GraphController {
     @GetMapping("/graph/{duration}")
     public String showGraphWeek(Model model,@PathVariable String duration) {
         ProjectUser user = (ProjectUser) session.getAttribute("user");
-        model.addAttribute("user", user);
+        model.addAttribute("user", session.getAttribute("user"));
         model.addAttribute("duration", duration);
         Calendar calendar = Calendar.getInstance();
         Date startDate = new Date(calendar.getTime().getTime());

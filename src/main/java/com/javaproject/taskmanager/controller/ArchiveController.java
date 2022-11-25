@@ -27,7 +27,7 @@ public class ArchiveController {
   @GetMapping("/list")
   public String showArchive(Model model){
     ProjectUser user = (ProjectUser) session.getAttribute("user");
-    model.addAttribute("user", user);
+    model.addAttribute("user", session.getAttribute("user"));
     List<Task> taskList = taskRepository.findByUserAndTaskStatusOrderByTaskDeadline(user, 1);
     model.addAttribute("mytasks", taskList);
     return "archive/archive";
